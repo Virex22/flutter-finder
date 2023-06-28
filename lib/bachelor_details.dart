@@ -1,8 +1,10 @@
 import 'dart:math';
 
 import 'package:confetti/confetti.dart';
+import 'package:finder/bachelor_likes.dart';
 import 'package:flutter/material.dart';
 import 'models/bachelor.dart';
+import 'package:provider/provider.dart';
 
 class BachelorDetails extends StatefulWidget {
   final Bachelor bachelor;
@@ -21,11 +23,26 @@ class BachelorDetailsState extends State<BachelorDetails> {
   final ConfettiController _controller =
       ConfettiController(duration: const Duration(microseconds: 100));
 
+  @override
+  void initState() {
+    final bachelorLikes = Provider.of<BachelorLikes>(context, listen: false);
+    isLiked = bachelorLikes.isLiked(widget.bachelor);
+    super.initState();
+  }
+
   void _toggleLike() {
     setState(() {
       isLiked = !isLiked;
-      if (isLiked) _controller.play();
+      if (isLiked) {
+        _controller.play();
+      }
     });
+    final bachelorLikes = Provider.of<BachelorLikes>(context, listen: false);
+    if (isLiked) {
+      bachelorLikes.addLikedBachelor(widget.bachelor);
+    } else {
+      bachelorLikes.removeLikedBachelor(widget.bachelor);
+    }
     showLikeSnackbar();
   }
 

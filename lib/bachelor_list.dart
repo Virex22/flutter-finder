@@ -1,4 +1,6 @@
+import 'package:finder/bachelor_likes.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'models/bachelor.dart';
 import 'bachelor_preview.dart';
 
