@@ -8,6 +8,17 @@ List<String> maleFirstNames = [
   'Robert',
   'William',
   'David',
+  'Richard',
+  'Joseph',
+  'Thomas',
+  'Charles',
+  'Christopher',
+  'Daniel',
+  'Anthony',
+  'Donald',
+  'Mark',
+  'Paul',
+  'Steven',
 ];
 
 List<String> femaleFirstNames = [
@@ -16,9 +27,17 @@ List<String> femaleFirstNames = [
   'Linda',
   'Patricia',
   'Susan',
+  'Barbara',
+  'Elizabeth',
+  'Jessica',
+  'Sarah',
+  'Karen',
+  'Nancy',
+  'Lisa',
+  'Margaret',
 ];
 
-class FakeDataGenerator {
+class BachelorGanerator {
   String generateFirstName(Gender gender) {
     Random random = Random();
 

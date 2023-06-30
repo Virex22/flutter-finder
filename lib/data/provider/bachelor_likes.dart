@@ -1,20 +1,22 @@
 import 'package:flutter/foundation.dart';
-import 'models/bachelor.dart';
+import '../../models/bachelor.dart';
 
 class BachelorLikes extends ChangeNotifier {
-  List<Bachelor> likedBachelors = [];
+  final List<Bachelor> _likedBachelors = [];
+
+  List<Bachelor> get likedBachelors => List.unmodifiable(_likedBachelors);
 
   void addLikedBachelor(Bachelor bachelor) {
-    likedBachelors.add(bachelor);
+    _likedBachelors.add(bachelor);
     notifyListeners();
   }
 
   void removeLikedBachelor(Bachelor bachelor) {
-    likedBachelors.remove(bachelor);
+    _likedBachelors.remove(bachelor);
     notifyListeners();
   }
 
   bool isLiked(Bachelor bachelor) {
-    return likedBachelors.contains(bachelor);
+    return _likedBachelors.contains(bachelor);
   }
 }

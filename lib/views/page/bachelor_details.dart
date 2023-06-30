@@ -1,9 +1,9 @@
 import 'dart:math';
 
 import 'package:confetti/confetti.dart';
-import 'package:finder/bachelor_likes.dart';
+import 'package:finder/data/provider/bachelor_likes.dart';
 import 'package:flutter/material.dart';
-import 'models/bachelor.dart';
+import '../../models/bachelor.dart';
 import 'package:provider/provider.dart';
 
 class BachelorDetails extends StatefulWidget {
@@ -68,19 +68,19 @@ class BachelorDetailsState extends State<BachelorDetails> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            IconButton(
+              icon: Icon(isLiked ? Icons.favorite : Icons.favorite_border,
+                  color: isLiked ? Colors.red : Colors.grey.withOpacity(0.75)),
+              onPressed: _toggleLike,
+            ),
             Stack(
               alignment: Alignment.center,
               children: [
                 CircleAvatar(
                   backgroundImage: NetworkImage(widget.bachelor.avatar),
+                  backgroundColor:
+                      isLiked ? Colors.red : Theme.of(context).primaryColor,
                   radius: 50,
-                ),
-                IconButton(
-                  icon: Icon(isLiked ? Icons.favorite : Icons.favorite_border,
-                      color: isLiked
-                          ? Colors.red
-                          : Colors.white.withOpacity(0.75)),
-                  onPressed: _toggleLike,
                 ),
                 ConfettiWidget(
                   confettiController: _controller,

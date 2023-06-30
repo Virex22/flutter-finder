@@ -1,8 +1,6 @@
-import 'package:finder/bachelor_likes.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'models/bachelor.dart';
-import 'bachelor_preview.dart';
+import '../../models/bachelor.dart';
+import 'bachelor_preview_list.dart';
 
 class BachelorList extends StatelessWidget {
   final List<Bachelor> bachelors;
@@ -14,7 +12,7 @@ class BachelorList extends StatelessWidget {
     return ListView.builder(
       itemCount: bachelors.length,
       itemBuilder: (context, index) {
-        return BachelorPreview(bachelor: bachelors[index]);
+        return BachelorPreviewList(bachelor: bachelors[index], hidable: true);
       },
     );
   }
